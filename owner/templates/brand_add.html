@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{%extends 'base.html'%}
+
+{%block body_block%}
+<div class="container">
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <h2 class="mt-5 mb-2">Add Brands Here</h2>
+            <form action="" method="POST" class="mt-2">
+                {%csrf_token%}
+
+                {{form.as_p}}
+                <input type="submit" value="Submit" class="btn btn-primary">
+            </form>
+        </div>
+        <div class="col-3"></div>
+    </div>
+
+<!--    to add messages-->
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            {% if messages%}
+            {%for message in messages%}
+<!--             success message-->
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+            <div class="bg-success text-white border">
+            {{message}}
+            </div>
+            {%endif%}
+<!--            error message-->
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+            <div class="bg-danger text-white border ">
+              {{message}}
+            </div>
+            {% endif%}
+            {%endfor%}
+            {%endif%}
+        </div>
+        <div class="col-4"></div>
+
+    </div>
+</div>
+
+{%endblock%}
